@@ -1,9 +1,8 @@
-
 pyemotiv
 =====================
 
 A Python library to aquire data from the Emotiv Epoc EEG neuroheadset, using
-the libraries provided with the research SDK.
+the files provided with the Emotiv research SDK.
 
 # Requirements:
 - Python 2.7+
