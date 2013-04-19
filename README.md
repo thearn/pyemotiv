@@ -11,8 +11,8 @@ the files provided with the Emotiv research SDK.
 
 # Setup:
 
-- Dynamic link library files for the research SDK. These should be placed
-in the `lib\bin` directory:
+- Dynamic link library files for the research SDK should be placed
+    in the `lib\bin` directory:
     - Windows: `edk.dll` and `edk_utils.dll`
     - OSX: `libedk.dylib` and `libedk_ultils_mac.dylib`
     
