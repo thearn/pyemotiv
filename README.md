@@ -8,8 +8,8 @@ Requirements:
 -------------
 - Python 2.7+
 - Numpy 1.5.0+
-- Research SDK library files from Emotiv (must be build for the same architecture as
-your python installation, otherwise ctypes.CDLL will raise an error)
+- Research SDK library files from Emotiv. These must be build for the same architecture as
+your python installation (either i386 or x86_64), otherwise ctypes.CDLL will raise an error
 
 Setup:
 ------
