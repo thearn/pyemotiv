@@ -42,7 +42,7 @@ from pyemotiv import Epoc
 
 epoc = Epoc()
 while True:
-    data = epoc.get_raw #14-by-n numpy array containing raw data for AF3 through AF4
+    data = epoc.get_raw() #14-by-n numpy array containing raw data for AF3 through AF4
     #this is equivelant to:
     data = epoc.aquire([3,4,5,6,7,8,9,10,11,12,13,14,15,16]) #AF3 through AF4
     times = epoc.times #array of interpolated timestamps, just as before
@@ -53,7 +53,7 @@ from pyemotiv import Epoc
 
 epoc = Epoc()
 while True:
-    gyros = epoc.get_gyros #2-by-n-row array containing data for GYROX and GYROY
+    gyros = epoc.get_gyros() #2-by-n-row array containing data for GYROX and GYROY
     #this is equivelant to:
     data = epoc.aquire([17,18]) #GYROX, GYROY
     times = epoc.times #array of interpolated timestamps, just as before
