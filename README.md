@@ -27,10 +27,15 @@ from pyemotiv import Epoc
 
 epoc = Epoc()
 while True:
-    # get only the most recent values for the gyro sensors and the latest time
-    # stamp
-    g_y, g_x, t= epoc.get_next(single=['ED_GYROY','ED_GYROX','ED_TIMESTAMP'])
-    print g_y, g_x, t
+    epoc.get() #aquire latest data from hardware buffer
+    
+    data = epoc.raw #14-by-n numpy array containing raw data for AF3 through AF4
+    
+    gyros = epoc.gyros #2-by-n-row array containing data for GYROX and GYROY
+    
+    times = epoc.times #1d array containing timestamp values (interpolated)
+    
+    everything = epoc.all_data # 25-by-n array containing all data returned by emotiv
 ```
     
 Todo:
