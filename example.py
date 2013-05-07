@@ -6,8 +6,8 @@ if __name__=="__main__":
     channels= epoc.channels
     
     while True:
-        raw = epoc.get() #19,20
-        print epoc.raw
+        raw = epoc.get_gyros() #19,20
+        print raw
         sleep(1/128.)
         
         

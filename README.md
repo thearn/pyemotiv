@@ -35,7 +35,7 @@ while True:
     times = epoc.times #1d array containing timestamp values (interpolated)
     everything = epoc.all_data # 25-by-n array containing all data returned by emotiv
 ```
-This demonstrates using reduced calls that just get certain channels of data
+The next two examples demonstrate using reduced calls that just get certain channels of data
 (only the raw EEG, or only the gyros). This is more efficient if you know what you want.
 ```python
 from pyemotiv import Epoc
@@ -43,6 +43,10 @@ from pyemotiv import Epoc
 epoc = Epoc()
 while True:
     data = epoc.get_raw #14-by-n numpy array containing raw data for AF3 through AF4
+    #this is equivelant to:
+    data = epoc.aquire([3,4,5,6,7,8,9,10,11,12,13,14,15,16]) #AF3 through AF4
+    
+    times = epoc.times #array of interpolated timestamps, just as before
 ```
 
 ```python
@@ -51,9 +55,13 @@ from pyemotiv import Epoc
 epoc = Epoc()
 while True:
     gyros = epoc.get_gyros #2-by-n-row array containing data for GYROX and GYROY
+    #this is equivelant to:
+    data = epoc.aquire([17,18]) #GYROX, GYROY
+    times = epoc.times #array of interpolated timestamps, just as before
 ```
-You can mix and match these two kinds of calls if you prefer, however the `times`
-array will not be accurate if you do this.
+You can mix and match these two kinds of calls with the first example, if you prefer.
+However the `times` array will not be accurate if you do this. Best practice is to
+decide which arrays you would like to access, and keep your calls consistent with this.
 
 Todo:
 ------
