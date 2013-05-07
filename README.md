@@ -22,6 +22,8 @@ location known to your system's PATH:
 
 Example:
 -------
+This demonstrates using a call to get all data from the Epoc at once:
+
 ```python
 from pyemotiv import Epoc
 
@@ -37,7 +39,26 @@ while True:
     
     everything = epoc.all_data # 25-by-n array containing all data returned by emotiv
 ```
-    
+This demonstrates using reduced calls that just get certain channels of data
+(only the raw EEG, or only the gyros). This is more efficient if you know what you want.
+```python
+from pyemotiv import Epoc
+
+epoc = Epoc()
+while True:
+    data = epoc.get_raw #14-by-n numpy array containing raw data for AF3 through AF4
+```
+
+```python
+from pyemotiv import Epoc
+
+epoc = Epoc()
+while True:
+    gyros = epoc.get_gyros #2-by-n-row array containing data for GYROX and GYROY
+```
+You can mix and match these two kinds of calls if you prefer, however the `times`
+array will not be accurate if you do this.
+
 Todo:
 ------
 - Add support for Linux (I do not have access to the Linux SDK files, though)
