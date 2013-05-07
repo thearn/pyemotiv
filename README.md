@@ -1,15 +1,18 @@
 pyemotiv
-=====================
+---------
 
 A Python library to aquire data from the Emotiv Epoc EEG neuroheadset, using
 the files provided with the Emotiv research SDK.
 
-# Requirements:
+Requirements:
+-------------
 - Python 2.7+
 - Numpy 1.5.0+
-- Research SDK library files from Emotiv
+- Research SDK library files from Emotiv (must be build for the same architecture as
+your python installation, otherwise ctypes.CDLL will raise an error)
 
-# Setup:
+Setup:
+------
 - Build and install the library: `python setup.py build install`
 - Dynamic link library files for the research SDK should be placed in a 
 location known to your system's PATH:
@@ -17,8 +20,8 @@ location known to your system's PATH:
     - OSX: `libedk.dylib` and `libedk_ultils_mac.dylib` in `usr/local/lib`
 - Import class `Epoc` from `emotiv.py` into your Python application.
 
-# Example:
-
+Example:
+-------
 ```python
 from pyemotiv import Epoc
 
