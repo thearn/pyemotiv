@@ -29,14 +29,10 @@ from pyemotiv import Epoc
 
 epoc = Epoc()
 while True:
-    epoc.get() #aquire latest data from hardware buffer
-    
+    epoc.get() #Aquire latest data from hardware buffer. Iterates over all channels
     data = epoc.raw #14-by-n numpy array containing raw data for AF3 through AF4
-    
     gyros = epoc.gyros #2-by-n-row array containing data for GYROX and GYROY
-    
     times = epoc.times #1d array containing timestamp values (interpolated)
-    
     everything = epoc.all_data # 25-by-n array containing all data returned by emotiv
 ```
 This demonstrates using reduced calls that just get certain channels of data
