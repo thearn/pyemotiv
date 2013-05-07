@@ -45,7 +45,6 @@ while True:
     data = epoc.get_raw #14-by-n numpy array containing raw data for AF3 through AF4
     #this is equivelant to:
     data = epoc.aquire([3,4,5,6,7,8,9,10,11,12,13,14,15,16]) #AF3 through AF4
-    
     times = epoc.times #array of interpolated timestamps, just as before
 ```
 
