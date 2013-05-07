@@ -11,7 +11,8 @@ the files provided with the Emotiv research SDK.
 
 # Setup:
 - Build and install the library: `python setup.py build install`
-- Dynamic link library files for the research SDK should be placed in your system's PATH:
+- Dynamic link library files for the research SDK should be placed in a 
+location known to your system's PATH:
     - Windows: `edk.dll` and `edk_utils.dll` in `windows/system32`
     - OSX: `libedk.dylib` and `libedk_ultils_mac.dylib` in `usr/local/lib`
 - Import class `Epoc` from `emotiv.py` into your Python application.
