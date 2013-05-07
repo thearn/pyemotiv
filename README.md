@@ -59,9 +59,10 @@ while True:
     data = epoc.aquire([17,18]) #GYROX, GYROY
     times = epoc.times #array of interpolated timestamps, just as before
 ```
-You can mix and match these two kinds of calls with the first example, if you prefer.
-However the `times` array will not be accurate if you do this. Best practice is to
-decide which arrays you would like to access, and keep your calls consistent with this.
+You can mix and match these two kinds of calls with the `get()` method shown in 
+the first example, if you prefer. However the `times` array will not be accurate 
+if you do this. Best practice is to decide beforehand which arrays you would 
+like to access, and keep your calls consistent with that.
 
 Todo:
 ------
