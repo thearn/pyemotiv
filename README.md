@@ -20,7 +20,7 @@ location known to your system's PATH:
     - OSX: `libedk.dylib` and `libedk_ultils_mac.dylib` in `usr/local/lib`
 - Import class `Epoc` from `emotiv.py` into your Python application.
 
-Example:
+Usage:
 -------
 This demonstrates using a call to get all data from the Epoc at once:
 
