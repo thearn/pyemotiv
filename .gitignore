@@ -14,6 +14,7 @@ dist/
 *.com
 *.class
 *.dll
+*.dylib
 *.exe
 *.o
 *.so
