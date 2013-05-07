@@ -35,4 +35,4 @@ while True:
     
 Todo:
 ------
-- Add support for Linux (I do not have access to the Linux SDK, though)
+- Add support for Linux (I do not have access to the Linux SDK files, though)
