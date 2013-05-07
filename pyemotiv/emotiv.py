@@ -60,13 +60,36 @@ class Epoc():
                 raise Exception('Timeout while connecting to Epoc!')
                 
     
-    def get(self):
+    def get_all(self):
         """
         Get block of raw data from the device buffer
         """
         if not self.connected:
             self.connect()
             
+        container = self.aquire(xrange(self.m))
+        self.raw = np.array([container[i] for i in self.raw_channels_idx])
+        self.gyros = np.array([container[i] for i in self.gyro_idx])
+        self.all_data = container
+        return self.raw
+    
+    def get_raw(self):
+        if not self.connected:
+            self.connect()
+            
+        container = self.aquire(self.raw_channels_idx)
+        self.raw = container
+        return container
+    
+    def get_gyros(self):
+        if not self.connected:
+            self.connect()
+            
+        container = self.aquire(self.gyro_idx)
+        self.gyros = container
+        return container
+        
+    def aquire(self,idx):
         nSamples = c_int()
         while True:
             self.edk.EE_DataUpdateHandle(c_uint(0), self.data_handler)
@@ -75,30 +98,19 @@ class Epoc():
             n = nSamples.value
             if not n:
                 continue
-            container = np.empty((self.m , n))
-            
-            for i in xrange(self.m):
+            container = np.empty((len(idx) , n))
+            k=0
+            for i in idx:
                 data = np.empty((1,n))
                 data_ctype = np.ctypeslib.as_ctypes(data)
                 self.edk.EE_DataGet(self.data_handler, i, byref(data_ctype),
                                     c_uint(n))
                 data_read = np.ctypeslib.as_array(data_ctype)
-                container[i,:] = data_read[0]
-                
-            self.raw = np.array([container[i] for i in self.raw_channels_idx])
-            self.gyros = np.array([container[i] for i in self.gyro_idx])
+                container[k,:] = data_read[0]
+                k+=1
             self.times = np.linspace(self.times[-1]+self.sr, 
-                                     self.times[-1]+ n*self.sr, n)
-            self.all_data = container
-            return self.raw
-
+                                     self.times[-1]+ n*self.sr, n)            
+            return container
         
-if __name__=="__main__":
-    epoc=Epoc()
-    channels= epoc.channels
-    
-    while True:
-        raw = epoc.get() #19,20
-        print epoc.times
         
         
