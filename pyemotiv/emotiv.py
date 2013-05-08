@@ -16,8 +16,7 @@ class Epoc():
                                   'ED_FUNC_ID','ED_FUNC_VALUE','ED_MARKER',
                                   'ED_SYNC_SIGNAL']
         self.raw_channels_idx = range(3,17)
-        self.gyro_idx = [self.channels.index("ED_GYROX"),
-                         self.channels.index("ED_GYROY")]
+        self.gyro_idx = [self.channels.index("ED_GYROX"),self.channels.index("ED_GYROY")]
         self.names = [name[3:] for name in self.channels]
         self.name_dict = {name:i for name,i in zip(self.names,
                                                    xrange(len(self.names)))}
@@ -48,7 +47,6 @@ class Epoc():
         self.edk.EE_DataSetBufferSizeInSec(5)
         
         eEvent = self.edk.EE_EmoEngineEventCreate()
-        print eEvent
         state = self.edk.EE_EngineGetNextEvent(eEvent)
         t0 = time.time()
         while not self.connected:
@@ -91,7 +89,6 @@ class Epoc():
     def aquire(self,idx):
         nSamples = c_int()
         while True:
-            print self.data_handler
             self.edk.EE_DataUpdateHandle(c_uint(0), self.data_handler)
             self.edk.EE_DataGetNumberOfSample(self.data_handler, 
                                               byref(nSamples))
