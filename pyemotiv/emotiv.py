@@ -48,6 +48,7 @@ class Epoc():
         self.edk.EE_DataSetBufferSizeInSec(5)
         
         eEvent = self.edk.EE_EmoEngineEventCreate()
+        print eEvent
         state = self.edk.EE_EngineGetNextEvent(eEvent)
         t0 = time.time()
         while not self.connected:
@@ -76,7 +77,6 @@ class Epoc():
     def get_raw(self):
         if not self.connected:
             self.connect()
-            
         container = self.aquire(self.raw_channels_idx)
         self.raw = container
         return container
@@ -84,7 +84,6 @@ class Epoc():
     def get_gyros(self):
         if not self.connected:
             self.connect()
-            
         container = self.aquire(self.gyro_idx)
         self.gyros = container
         return container
@@ -92,6 +91,7 @@ class Epoc():
     def aquire(self,idx):
         nSamples = c_int()
         while True:
+            print self.data_handler
             self.edk.EE_DataUpdateHandle(c_uint(0), self.data_handler)
             self.edk.EE_DataGetNumberOfSample(self.data_handler, 
                                               byref(nSamples))
@@ -113,4 +113,7 @@ class Epoc():
             return container
         
         
-        
+if __name__ == "__main__":
+    e = Epoc()
+    while True:
+        e.get_raw()
