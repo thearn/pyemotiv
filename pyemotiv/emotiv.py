@@ -70,7 +70,7 @@ class Epoc():
         self.raw = np.array([container[i] for i in self.raw_channels_idx])
         self.gyros = np.array([container[i] for i in self.gyro_idx])
         self.all_data = container
-        return self.raw
+        return self.all_data
     
     def get_raw(self):
         if not self.connected:
