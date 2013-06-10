@@ -1,5 +1,7 @@
 from gzp import load
 import pylab
+import matplotlib
+matplotlib.use('Agg')
 
 """
 Loads & plots data from disk
@@ -7,13 +9,8 @@ Loads & plots data from disk
 
 data, times, breaktime, channels = load("experiment.dat")
 
-pylab.figure()
-pylab.plot(times, data)
-
-pylab.plot([breaktime, breaktime],[-1e6, 1e6], 'k--')
-pylab.ylim(min(data), max(data))
-
-pylab.xlabel("time")
-pylab.ylabel("GSR")
+for dat in data:
+    pylab.figure()
+    pylab.plot(dat)
 
 pylab.show()

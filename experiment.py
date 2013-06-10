@@ -21,25 +21,23 @@ print "First phase..."
 while True: #first phase (eg. 'resting')
     try:
         x = headset.get_raw()
-        t = time.time() - t0
-        
+        t = headset.times
         data = np.concatenate((data, x), axis  = 1)
-        times.append(t)
+        times = np.concatenate((times, t), axis  = -1)
     
     except KeyboardInterrupt:
         break
 
-breaktime = time.time() - t0
+breaktime = times[-1]
 
 print "Second phase..."
 while True: #second phase (eg. 'attentive')
     
     try:
         x = headset.get_raw()
-        t = time.time() - t0
-        
+        times = headset.times
         data = np.concatenate((data, x), axis  = 1)
-        times.append(t)
+        times = np.concatenate((times, t), axis  = -1)
     
     except KeyboardInterrupt:
         break
