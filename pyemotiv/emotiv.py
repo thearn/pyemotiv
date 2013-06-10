@@ -2,7 +2,7 @@ from ctypes import c_char_p, c_uint, c_int,c_bool, byref, CDLL
 import numpy as np
 import time, sys
 
-class Epoc():
+class Epoc(object):
     """
     Class that connects to Emotiv Epoc by wrapping the 
     research SDK dynamic link libraries
@@ -29,7 +29,7 @@ class Epoc():
         
         #setup access to binaries
         if sys.platform=='darwin':
-            edk_file='libedk.dylib'
+            edk_file='libedk.1.0.0.dylib'
         elif sys.platform=='win32':
             sys.path.append('lib')
             edk_file='edk.dll'
