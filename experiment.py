@@ -35,7 +35,7 @@ while True: #second phase (eg. 'attentive')
     
     try:
         x = headset.get_raw()
-        times = headset.times
+        t = headset.times
         data = np.concatenate((data, x), axis  = 1)
         times = np.concatenate((times, t), axis  = -1)
     
