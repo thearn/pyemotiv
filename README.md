@@ -67,3 +67,4 @@ like to access, and keep your calls consistent with that.
 Todo:
 ------
 - Add support for Linux (I do not have access to the Linux SDK files, though)
+- Restructure the wrapper using Cython rather than ctypes. This will do the channel looping in C rather than Python. It might not be a huge boostin absolute terms, but for a 128mhz device it could lead to real-time in-the-loop applications having quicker response times to evoked stimuli.
